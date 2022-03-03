@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faking Textarea on Typing</title>
+</head>
+<body>
+<h1>Type anything slowly</h1>
+<textarea id="txt" cols="50" rows="10" onkeydown="fake()"></textarea>
+<script>
+    let strArr = " Mày đang viết cái gì đấy homies? =))";
+    let array = strArr.split("");
+    let str = "";
+    function fake() {
+        let text = document.getElementById("txt").value;
+        for (let i = 0; i < text.length; i++) {
+            str = str + array[i];
+            if (i == (array.length)) {
+                str = "";
+            }
+        }
+        document.getElementById("txt").value = str;
+        str = "";
+        setTimeout(fake, 1);
+    }
+</script>
+</body>
+</html>
